@@ -11,7 +11,10 @@ def comput(list):
 
         img=cv2.imread(file,0)
         startime = time.clock()
-        var=cv2.Sobel(img,cv2.CV_8UC1,1,1).mean()
+        #img=cv2.GaussianBlur(img,(3,3),0)
+        #img=cv2.cvtColor(img,cv2.COLOR_BGR2BGRA)
+        var=cv2.Laplacian(img,cv2.CV_64F).var()
+        #img=cv2.convertScaleAbs(img)
         list_var.append(var)
         overtime=time.clock()-startime
         list_time.append(overtime)
